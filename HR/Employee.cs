@@ -26,14 +26,14 @@ namespace HR
             List<EmployeeDTO> lstCus = cusBUS.ReadCustomer();
             foreach (EmployeeDTO cus in lstCus)
             {
-                dataGridView1.Rows.Add(cus.MaNhanVien, cus.Ten,cus.NgaySinh,cus.GioiTinh,cus.NoiSinh, cus.DonVi);
+                dataGridView1.Rows.Add(cus.MaNhanVien, cus.Ten,cus.NgaySinh,cus.GioiTinh,cus.NoiSinh, cus.DonVi.Tendonvi);
             }
             List<AreaDTO> lstArea = areBUS.ReadAreaList();
             foreach (AreaDTO area in lstArea)
             {
                 cbdonvi.Items.Add(area);
             }
-            cbdonvi.DisplayMember = "Madonvi";
+            cbdonvi.DisplayMember = "Tendonvi";
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -103,7 +103,7 @@ namespace HR
             }
             else
             {
-                if (MessageBox.Show("Bạn có muốn xoá", "Thông báo",
+                if (MessageBox.Show("Bạn có chắc chắn muốn xoá", "Thông báo",
                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     EmployeeDTO cus = new EmployeeDTO();
