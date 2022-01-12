@@ -89,7 +89,7 @@ namespace HR
                 row.Cells[2].Value = cus.NgaySinh;
                 row.Cells[3].Value = cus.GioiTinh;
                 row.Cells[4].Value = cus.NoiSinh;
-                row.Cells[5].Value = cus.DonVi;
+                row.Cells[5].Value = cus.DonVi.Tendonvi;
             }
             else
                 MessageBox.Show("Chọn nhân viên cần sửa");
