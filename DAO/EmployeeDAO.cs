@@ -36,7 +36,7 @@ namespace DAO
             return lstEmpl;
         }          
 
-        public void AddEmployee(EmployeeDTO cus)
+        public void AddEmployee(EmployeeDTO empl)
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
@@ -47,22 +47,22 @@ namespace DAO
                 cmd.CommandText = "AddEmployee";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = conn;
-                cmd.Parameters.Add("@IdEmployee", SqlDbType.Int).Value = cus.MaNhanVien;
-                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = cus.Ten;
-                cmd.Parameters.Add("@DateBirth", SqlDbType.Date).Value = cus.NgaySinh;
-                cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = cus.GioiTinh;
-                cmd.Parameters.Add("@PlaceBirth", SqlDbType.NVarChar).Value = cus.NoiSinh;
-                cmd.Parameters.Add("@IdDepartment", SqlDbType.Int).Value = cus.DonVi.Madonvi;
+                cmd.Parameters.Add("@IdEmployee", SqlDbType.Int).Value = empl.MaNhanVien;
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = empl.Ten;
+                cmd.Parameters.Add("@DateBirth", SqlDbType.Date).Value = empl.NgaySinh;
+                cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = empl.GioiTinh;
+                cmd.Parameters.Add("@PlaceBirth", SqlDbType.NVarChar).Value = empl.NoiSinh;
+                cmd.Parameters.Add("@IdDepartment", SqlDbType.Int).Value = empl.DonVi.Madonvi;
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                Console.WriteLine("Them thanh cong !!!");
+                Console.WriteLine("Thêm thành công !!!");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Co loi xay ra !!!" + e);
+                Console.WriteLine("Có lỗi xảy ra !!!" + e);
             }
             finally
             {
@@ -89,11 +89,11 @@ namespace DAO
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                Console.WriteLine("Sua thanh cong !!!");
+                Console.WriteLine("Sửa thành công!!!");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Co loi xay ra !!!" + e);
+                Console.WriteLine("Có lỗi xảy ra !!!" + e);
             }
             finally
             {
@@ -111,17 +111,16 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = con;
                 cmd.Parameters.Add("@IdEmployee", SqlDbType.Int).Value = 1;
+
                 con.Open();
-
                 cmd.ExecuteNonQuery();
-
                 con.Close();
 
-                Console.WriteLine("Xoa thanh cong !!!");
+                Console.WriteLine("Sửa thành công !!!");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Co loi xay ra !!!" + e);
+                Console.WriteLine("Có lỗi xảy ra !!!" + e);
             }
             finally
             {

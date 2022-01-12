@@ -14,8 +14,8 @@ namespace HR
 {
     public partial class Employee : Form
     {
-        EmployeeBUS cusBUS = new EmployeeBUS();
-        AreaBUS areBUS = new AreaBUS();
+        EmployeeBUS emplBUS = new EmployeeBUS();
+        AreaBUS areaBUS = new AreaBUS();
         public Employee()
         {
             InitializeComponent();
@@ -23,12 +23,12 @@ namespace HR
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            List<EmployeeDTO> lstCus = cusBUS.ReadCustomer();
-            foreach (EmployeeDTO cus in lstCus)
+            List<EmployeeDTO> lstEmpl = emplBUS.ReadCustomer();
+            foreach (EmployeeDTO empl in lstEmpl)
             {
-                dataGridView1.Rows.Add(cus.MaNhanVien, cus.Ten,cus.NgaySinh,cus.GioiTinh,cus.NoiSinh, cus.DonVi.Tendonvi);
+                dataGridView1.Rows.Add(empl.MaNhanVien, empl.Ten, empl.NgaySinh, empl.GioiTinh, empl.NoiSinh, empl.DonVi.Tendonvi);
             }
-            List<AreaDTO> lstArea = areBUS.ReadAreaList();
+            List<AreaDTO> lstArea = areaBUS.ReadAreaList();
             foreach (AreaDTO area in lstArea)
             {
                 cbdonvi.Items.Add(area);
@@ -55,15 +55,15 @@ namespace HR
         {
             if (tbmanv.Text != "" && tbtennv.Text != "" && dtngaysinh.Text != "" && chbgioitinh.Text != "" && tbnoisinh.Text != "" && cbdonvi.Text != "")
             {
-                    EmployeeDTO cus = new EmployeeDTO();
-                    cus.MaNhanVien= tbmanv.Text;
-                    cus.Ten = tbtennv.Text;
-                    cus.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
-                    cus.GioiTinh = chbgioitinh.Text;
-                    cus.NoiSinh = tbnoisinh.Text;
-                    cus.DonVi = (AreaDTO)cbdonvi.SelectedItem;
-                    cusBUS.AddEmployee(cus);
-                    dataGridView1.Rows.Add(cus.MaNhanVien, cus.Ten,cus.NgaySinh,cus.GioiTinh,cus.NoiSinh, cus.DonVi.Tendonvi);
+                    EmployeeDTO empl = new EmployeeDTO();
+                    empl.MaNhanVien= tbmanv.Text;
+                    empl.Ten = tbtennv.Text;
+                    empl.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
+                    empl.GioiTinh = chbgioitinh.Text;
+                    empl.NoiSinh = tbnoisinh.Text;
+                    empl.DonVi = (AreaDTO)cbdonvi.SelectedItem;
+                    emplBUS.AddEmployee(empl);
+                    dataGridView1.Rows.Add(empl.MaNhanVien, empl.Ten, empl.NgaySinh, empl.GioiTinh, empl.NoiSinh, empl.DonVi.Tendonvi);
 
             }
             else
@@ -75,21 +75,21 @@ namespace HR
             DataGridViewRow row = dataGridView1.CurrentRow;
             if (row != null)
             {
-                EmployeeDTO cus = new EmployeeDTO();
-                cus.MaNhanVien = tbmanv.Text;
-                cus.Ten = tbtennv.Text;
-                cus.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
-                cus.GioiTinh = chbgioitinh.Text;
-                cus.NoiSinh = tbnoisinh.Text;
-                cus.DonVi = (AreaDTO)cbdonvi.SelectedItem;
-                cusBUS.AddEmployee(cus);
+                EmployeeDTO empl = new EmployeeDTO();
+                empl.MaNhanVien = tbmanv.Text;
+                empl.Ten = tbtennv.Text;
+                empl.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
+                empl.GioiTinh = chbgioitinh.Text;
+                empl.NoiSinh = tbnoisinh.Text;
+                empl.DonVi = (AreaDTO)cbdonvi.SelectedItem;
+                emplBUS.AddEmployee(empl);
 
-                row.Cells[0].Value = cus.MaNhanVien;
-                row.Cells[1].Value = cus.Ten;
-                row.Cells[2].Value = cus.NgaySinh;
-                row.Cells[3].Value = cus.GioiTinh;
-                row.Cells[4].Value = cus.NoiSinh;
-                row.Cells[5].Value = cus.DonVi.Tendonvi;
+                row.Cells[0].Value = empl.MaNhanVien;
+                row.Cells[1].Value = empl.Ten;
+                row.Cells[2].Value = empl.NgaySinh;
+                row.Cells[3].Value = empl.GioiTinh;
+                row.Cells[4].Value = empl.NoiSinh;
+                row.Cells[5].Value = empl.DonVi.Tendonvi;
             }
             else
                 MessageBox.Show("Chọn nhân viên cần sửa");
@@ -106,15 +106,15 @@ namespace HR
                 if (MessageBox.Show("Bạn có chắc chắn muốn xoá", "Thông báo",
                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    EmployeeDTO cus = new EmployeeDTO();
-                    cus.MaNhanVien = tbmanv.Text;
-                    cus.Ten = tbtennv.Text;
-                    cus.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
-                    cus.GioiTinh = chbgioitinh.Text;
-                    cus.NoiSinh = tbnoisinh.Text;
-                    cus.DonVi = (AreaDTO)cbdonvi.SelectedItem;
+                    EmployeeDTO empl = new EmployeeDTO();
+                    empl.MaNhanVien = tbmanv.Text;
+                    empl.Ten = tbtennv.Text;
+                    empl.NgaySinh = DateTime.Parse(dtngaysinh.Value.Date.ToString());
+                    empl.GioiTinh = chbgioitinh.Text;
+                    empl.NoiSinh = tbnoisinh.Text;
+                    empl.DonVi = (AreaDTO)cbdonvi.SelectedItem;
 
-                    cusBUS.DeleteEmployee(cus);
+                    emplBUS.DeleteEmployee(empl);
                     int idx = dataGridView1.CurrentCell.RowIndex;
                     dataGridView1.Rows.RemoveAt(idx);
                 }
