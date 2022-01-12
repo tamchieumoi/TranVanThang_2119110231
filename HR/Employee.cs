@@ -23,7 +23,7 @@ namespace HR
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            List<EmployeeDTO> lstEmpl = emplBUS.ReadCustomer();
+            List<EmployeeDTO> lstEmpl = emplBUS.ReadEmployee();
             foreach (EmployeeDTO empl in lstEmpl)
             {
                 dataGridView1.Rows.Add(empl.MaNhanVien, empl.Ten, empl.NgaySinh, empl.GioiTinh, empl.NoiSinh, empl.DonVi.Tendonvi);

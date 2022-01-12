@@ -10,9 +10,9 @@ namespace BUS
     public class EmployeeBUS
     {
         EmployeeDAO dao = new EmployeeDAO();
-        public List<EmployeeDTO> ReadCustomer()
+        public List<EmployeeDTO> ReadEmployee()
         {
-            List<EmployeeDTO> lstEmpl = dao.ReadCustomer();
+            List<EmployeeDTO> lstEmpl = dao.ReadEmployee();
             return lstEmpl;
         }
         public void AddEmployee(EmployeeDTO empl)

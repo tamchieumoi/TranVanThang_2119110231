@@ -10,7 +10,7 @@ namespace DAO
 {
     public class EmployeeDAO : DBConnection
     {
-        public List<EmployeeDTO> ReadCustomer()
+        public List<EmployeeDTO> ReadEmployee()
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
