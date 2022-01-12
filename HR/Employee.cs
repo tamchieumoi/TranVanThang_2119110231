@@ -53,7 +53,7 @@ namespace HR
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (tbmanv.Text == "" && tbtennv.Text == "" && dtngaysinh.Text == "" && chbgioitinh.Text == "" && tbnoisinh.Text == "" && cbdonvi.Text == "")
+            if (tbmanv.Text != "" && tbtennv.Text != "" && dtngaysinh.Text != "" && chbgioitinh.Text != "" && tbnoisinh.Text != "" && cbdonvi.Text != "")
             {
                     EmployeeDTO cus = new EmployeeDTO();
                     cus.MaNhanVien= tbmanv.Text;
@@ -123,7 +123,12 @@ namespace HR
 
         private void btExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult f = MessageBox.Show("Bạn có thực sự muốn thoát?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (f == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
     }
 }

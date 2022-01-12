@@ -12,20 +12,20 @@ namespace BUS
         EmployeeDAO dao = new EmployeeDAO();
         public List<EmployeeDTO> ReadCustomer()
         {
-            List<EmployeeDTO> lstCus = dao.ReadCustomer();
-            return lstCus;
+            List<EmployeeDTO> lstEmpl = dao.ReadCustomer();
+            return lstEmpl;
         }
-        public void AddEmployee(EmployeeDTO cus)
+        public void AddEmployee(EmployeeDTO empl)
         {
-            dao.AddEmployee(cus);
+            dao.AddEmployee(empl);
         }
-        public void DeleteEmployee(EmployeeDTO cus)
+        public void DeleteEmployee(EmployeeDTO empl)
         {
-            dao.DeleteEmployee(cus);
+            dao.DeleteEmployee(empl);
         }
-        public void EditEmployee(EmployeeDTO cus)
+        public void EditEmployee(EmployeeDTO empl)
         {
-            dao.EditEmployee(cus);
+            dao.EditEmployee(empl);
         }
     }
 }
